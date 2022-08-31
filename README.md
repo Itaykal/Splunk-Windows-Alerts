@@ -16,3 +16,4 @@ Run from inside the repo.
 ```
 pythonw alert.py
 ```
+It will keep running untill stopped externally or by an unhandled exception
