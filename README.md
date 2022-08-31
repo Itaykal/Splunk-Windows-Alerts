@@ -1,4 +1,5 @@
 # Splunk Windows Alerts
+![example](./example_alert/example.png)
 ## IMPORTANT
 `kill.bat` -->
 In case something goes wrong there's an emergancy kill file that kills the background process.
