@@ -26,7 +26,7 @@ def create_rotating_log(path):
     
     # add a rotating handler
     handler = RotatingFileHandler(path, maxBytes=10*1024*1024,
-                                  backupCount=5)
+                                backupCount=5)
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
@@ -38,7 +38,7 @@ LOGGER = create_rotating_log(LOGGER_FILE)
 
 def exception_handler(exc_type, value, traceback):
     if issubclass(exc_type, KeyboardInterrupt):
-        logger.info("stopping...")
+        LOGGER.info("stopping...")
         sys.__excepthook__(exc_type, value, traceback)
         
     LOGGER.exception(f"Uncaught exception: ", exc_info=(exc_type, value, traceback))
