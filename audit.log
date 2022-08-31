@@ -5,3 +5,18 @@
 2022-08-31 22:05:10,291 - alert_notification - INFO - raising alert S3 Bucket is Full (90%)
 2022-08-31 22:05:10,291 - alert_notification - INFO - raising alert Splunk Died :(
 2022-08-31 22:05:16,909 - alert_notification - WARNING - silent mode period started
+2022-08-31 22:07:34,293 - alert_notification - INFO - raising alert S3 Bucket is Full (90%)
+2022-08-31 22:07:34,293 - alert_notification - INFO - raising alert Splunk Died :(
+2022-08-31 22:07:36,263 - alert_notification - WARNING - silent mode period started
+2022-08-31 22:14:09,246 - alert_notification - INFO - starting with PID: 21856
+2022-08-31 22:14:09,521 - alert_notification - INFO - raising alert S3 Bucket is Full (90%)
+2022-08-31 22:14:09,522 - alert_notification - INFO - raising alert Splunk Died :(
+2022-08-31 22:14:10,844 - alert_notification - WARNING - silent mode period started
+2022-08-31 22:14:57,494 - alert_notification - INFO - starting with PID: 3744
+2022-08-31 22:14:57,869 - alert_notification - INFO - raising alert S3 Bucket is Full (90%)
+2022-08-31 22:14:57,869 - alert_notification - INFO - raising alert Splunk Died :(
+2022-08-31 22:14:58,906 - alert_notification - WARNING - silent mode period started
+2022-08-31 22:15:52,719 - alert_notification - INFO - starting with PID: 19980
+2022-08-31 22:15:52,928 - alert_notification - INFO - raising alert S3 Bucket is Full (90%)
+2022-08-31 22:15:52,929 - alert_notification - INFO - raising alert Splunk Died :(
+2022-08-31 22:15:53,968 - alert_notification - WARNING - silent mode period started

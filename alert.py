@@ -6,6 +6,7 @@ import requests
 import logging
 import time
 import json
+import os
 
 INTERVAL = 10
 ONE_HOUR = 3600
@@ -15,6 +16,7 @@ EXIT_CODES = {
     7: False # 7 = vbNo - No was clicked
 }
 
+EMERGANCY_KILL = "kill.bat"
 POPUP_SCRIPT = "quick_popup.vbs"
 LOGGER = "audit.log"
 
@@ -85,7 +87,11 @@ def mainloop(logger):
 
 
 def main():
+    pid = os.getpid()
     logger = create_rotating_log(LOGGER)
+    logger.info(f"starting with PID: {pid}")
+    with open(EMERGANCY_KILL, "w") as kill:
+        kill.write(f"taskkill /PID {pid} /F \npause")
     mainloop(logger)
 
 if __name__ == "__main__":
