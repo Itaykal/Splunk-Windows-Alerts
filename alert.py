@@ -1,4 +1,3 @@
-from logging.handlers import RotatingFileHandler
 from urllib.parse import urlencode
 
 import subprocess as sp
@@ -8,35 +7,7 @@ import time
 import json
 import os
 
-INTERVAL = 10
-ONE_HOUR = 3600
-TEAM = 'monitoring'
-EXIT_CODES = {
-    6: True, # 6 = vbYes - Yes was clicked
-    7: False # 7 = vbNo - No was clicked
-}
-
-EMERGANCY_KILL = "kill.bat"
-POPUP_SCRIPT = "quick_popup.vbs"
-LOGGER = "audit.log"
-
-
-def create_rotating_log(path):
-    """
-    Creates a rotating log
-    """
-    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    logger = logging.getLogger("alert_notification")
-    logger.setLevel(logging.INFO)
-    
-    # add a rotating handler
-    handler = RotatingFileHandler(path, maxBytes=10*1024*1024,
-                                  backupCount=5)
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-
-    return logger
-
+from vars import *
 
 def Popup(title = "New Alerts", body = "Unkown Alert"):
     body += "\n\nMute alerts for 1 hour?"
@@ -69,30 +40,30 @@ def getData():
     return json_response
 
 
-def mainloop(logger):    
+def mainloop():    
     while True:
         results = getData()['results']
         if results:
             alerts = [result['alert_name'] for result in results]
-            [logger.info(f"raising alert {alert}") for alert in alerts]
+            [LOGGER.info(f"raising alert {alert}") for alert in alerts]
             
             p = Popup(body = '\n'.join(alerts))
             p.communicate()[0]
             
             if EXIT_CODES[p.returncode]:
-                logger.warning("silent mode period started")
+                raise RuntimeError("test")
+                LOGGER.warning("silent mode period started")
                 time.sleep(ONE_HOUR - INTERVAL)
-                logger.warning("silent mode period ended")
+                LOGGER.warning("silent mode period ended")
         time.sleep(INTERVAL)
 
 
 def main():
     pid = os.getpid()
-    logger = create_rotating_log(LOGGER)
-    logger.info(f"starting with PID: {pid}")
+    LOGGER.info(f"starting with PID: {pid}")
     with open(EMERGANCY_KILL, "w") as kill:
         kill.write(f"taskkill /PID {pid} /F \npause")
-    mainloop(logger)
+    mainloop()
 
 if __name__ == "__main__":
     main()
