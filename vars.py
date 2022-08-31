@@ -2,9 +2,9 @@
     SETTING GLOBALS
 """
 
+TEAM = 'monitoring'
 INTERVAL = 10
 ONE_HOUR = 3600
-TEAM = 'monitoring'
 EXIT_CODES = {
     6: True, # 6 = vbYes - Yes was clicked
     7: False # 7 = vbNo - No was clicked
