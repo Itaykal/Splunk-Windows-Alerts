@@ -51,7 +51,6 @@ def mainloop():
             p.communicate()[0]
             
             if EXIT_CODES[p.returncode]:
-                raise RuntimeError("test")
                 LOGGER.warning("silent mode period started")
                 time.sleep(ONE_HOUR - INTERVAL)
                 LOGGER.warning("silent mode period ended")
