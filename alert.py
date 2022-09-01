@@ -44,7 +44,7 @@ def mainloop():
     while True:
         results = getData()['results']
         if results:
-            alerts = [result['alert_name'] for result in results]
+            alerts = [f"* {result['alert_name']}" for result in results]
             [LOGGER.info(f"raising alert {alert}") for alert in alerts]
             
             p = Popup(body = '\n'.join(alerts))
